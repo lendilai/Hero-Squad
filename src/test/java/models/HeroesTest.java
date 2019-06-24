@@ -27,4 +27,11 @@ public class HeroesTest {
         assertEquals("Smart", newHero.getSuperPower());
         assertEquals("Leader", newHero.getRole());
     }
+
+    @Test
+    public void getAllHeroes_capturesAllHeroes_2() throws Exception{
+        Heroes first = setUpHero();
+        Heroes second = setUpHero();
+        assertEquals(2, Heroes.getAllheroes().size());
+    }
 }
