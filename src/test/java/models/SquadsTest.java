@@ -18,7 +18,7 @@ public class SquadsTest {
     }
 
     public Squads setUpSquad(){
-        return new Squads("Menace", "To destroy and conquer", 5);
+        return new Squads("Menace", "To destroy and conquer", "http.sgd.com",5);
     }
     @Test
     public void newSquad_instantiates_correctly_withCorrectValues_true() throws Exception{
@@ -29,6 +29,13 @@ public class SquadsTest {
         assertEquals("To destroy and conquer", first.getTheme());
         assertEquals(5, first.getMaxHeroes());
         assertEquals(2, Squads.getAllSquads().size());
+        assertEquals("http.sgd.com", second.getUrl());
     }
 
+    @Test
+    public void findId_getsCorrectSquad() throws Exception{
+        Squads first = setUpSquad();
+        Squads second = setUpSquad();
+        assertEquals(1, Squads.squadWithId(first.getId()).getId());
+    }
 }

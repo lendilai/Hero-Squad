@@ -1,9 +1,11 @@
 {{#partial "content"}}
     {{#each userSquad}}
-        <p>{{theme}}</p>
-        <img src="" alt="Squad">
-        <p>{{squadName}}</p>
-        <p>{{maxHeroes}}</p>
+        <a href="/squads/{{id}}">
+            <p>{{theme}}</p>
+            <img src="{{url}}" alt="Squad">
+            <p>{{squadName}}</p>
+            <p>{{maxHeroes}}</p>
+        </a>
     {{/each}}
 {{/partial}}
 {{> layout.hbs}}

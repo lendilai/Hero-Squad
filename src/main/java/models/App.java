@@ -29,8 +29,9 @@ public class App {
             Map<String, Object> user = new HashMap<>();
             String squadName = request.queryParams("name");
             String theme = request.queryParams("theme");
+            String url = request.queryParams("url");
             int numberOf = Integer.parseInt(request.queryParams("max"));
-            Squads userSquad = new Squads(squadName, theme, numberOf);
+            Squads userSquad = new Squads(squadName, theme, url, numberOf);
             user.put("userSquad", Squads.getAllSquads());
             return new ModelAndView(user, "success.hbs");
         }, new HandlebarsTemplateEngine());
