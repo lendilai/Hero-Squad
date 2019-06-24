@@ -44,7 +44,19 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //Get: View squad-details e.g heroes
+        get("/squads/:id", (request, response) -> {
+            Map<String, Object> user = new HashMap<>();
+            int theId = Integer.parseInt(request.queryParams("id"));
+            Squads pageId = Squads.squadWithId(theId);
+            user.put("squadHeroes", pageId);
+            return new ModelAndView(user, "Heroes.hbs");
+        }, new HandlebarsTemplateEngine());
+
         //Get: Add hero form
+        get("/heroes/new", (request, response) -> {
+            Map<String, Object> user = new HashMap<>();
+            return new ModelAndView(user, "Hero-form.hbs");
+        }, new HandlebarsTemplateEngine());
         //Post: Submit add hero form
         //Get: Delete a squad
     }

@@ -1,0 +1,10 @@
+{{#partial "content"}}
+{{#if heroes}}
+{{#each heroes}}
+<p>{{heroName}}</p>
+{{/each}}
+    {{else}}
+    <a href="/heroes/new"><button>Add a hero</button></a>
+{{/if}}
+{{/partial}}
+{{> layout.hbs}}
