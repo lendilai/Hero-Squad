@@ -25,8 +25,10 @@ public class SquadsTest {
         Squads first = setUpSquad();
         Squads second = setUpSquad();
         assertEquals(true, first instanceof Squads);
-        assertEquals("Menace", first.getmSquadName());
-        assertEquals("To destroy and conquer", first.getmTheme());
-        assertEquals(5, first.getmMaxHeroes());
+        assertEquals("Menace", first.getSquadName());
+        assertEquals("To destroy and conquer", first.getTheme());
+        assertEquals(5, first.getMaxHeroes());
+        assertEquals(2, Squads.getAllSquads().size());
     }
+
 }

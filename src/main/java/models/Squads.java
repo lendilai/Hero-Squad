@@ -3,31 +3,31 @@ package models;
 import java.util.ArrayList;
 
 public class Squads {
-    private String mSquadName;
-    private String mTheme;
-    private int mMaxHeroes;
+    private String squadName;
+    private String theme;
+    private int maxHeroes;
     public static ArrayList<Squads> allSquads = new ArrayList<>();
 
     public Squads(String name, String theme, int max){
-        this.mSquadName = name;
-        this.mTheme = theme;
-        this.mMaxHeroes = max;
+        this.squadName = name;
+        this.theme = theme;
+        this.maxHeroes = max;
         allSquads.add(this);
     }
 
-    public String getmSquadName() {
-        return mSquadName;
+    public String getSquadName() {
+        return squadName;
     }
 
-    public String getmTheme() {
-        return mTheme;
+    public String getTheme() {
+        return theme;
     }
 
-    public int getmMaxHeroes() {
-        return mMaxHeroes;
+    public int getMaxHeroes() {
+        return maxHeroes;
     }
 
-    public ArrayList<Squads> getAllSquads() {
+    public static ArrayList<Squads> getAllSquads() {
         return allSquads;
     }
 
