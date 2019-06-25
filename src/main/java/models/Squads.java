@@ -2,6 +2,8 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 public class Squads {
     private String squadName;
@@ -9,6 +11,9 @@ public class Squads {
     private String url;
     private int maxHeroes;
     private int id;
+    private LocalDateTime createdAt = LocalDateTime.now();
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy");
+    private String formatDateTime;
     private static ArrayList<Squads> allSquads = new ArrayList<>();
     private static List<Heroes> heroesInSquad;
 
@@ -17,6 +22,7 @@ public class Squads {
         this.theme = theme;
         this.url = url;
         this.maxHeroes = max;
+        this.formatDateTime = createdAt.format(formatter);
         allSquads.add(this);
         this.id = allSquads.size();
         heroesInSquad = new ArrayList<>();
@@ -37,6 +43,14 @@ public class Squads {
     public String getUrl() { return url; }
 
     public int getId() { return id; }
+
+    public String getFormatDateTime() {
+        return formatDateTime;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 
     public static ArrayList<Squads> getAllSquads() {
         return allSquads;

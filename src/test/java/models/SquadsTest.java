@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
+
 import static org.junit.Assert.*;
 
 public class SquadsTest {
@@ -45,5 +47,11 @@ public class SquadsTest {
         Squads newSquad = setUpSquad();
         newSquad.addHero(newHero);
         assertEquals(true, Squads.getHeroesInSquad().contains(newHero));
+    }
+
+    @Test
+    public void getsCorrectDate() {
+        Squads newSquad = setUpSquad();
+        assertEquals(LocalDateTime.now().getDayOfWeek(), newSquad.getCreatedAt().getDayOfWeek());
     }
 }
