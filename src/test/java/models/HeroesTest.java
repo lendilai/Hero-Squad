@@ -14,6 +14,7 @@ public class HeroesTest {
 
     @After
     public void tearDown() throws Exception {
+        Heroes.clearAllHeroes();
     }
 
     public Heroes setUpHero(){

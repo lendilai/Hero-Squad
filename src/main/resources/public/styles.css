@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css?family=Righteous|Teko&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://wallpapersfit.com/wp-content/uploads/data/2017/11/19/Desktop-Capitan-America-Wallpaper-wc10010084.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  background-attachment: fixed;
+}
+
+.img-fluid {
+  width: 22%;
+}
+
+.container-fluid {
+  margin-top: 45vh;
+}
+
+.flipInX {
+  font-family: "Righteous";
+  color: white;
+}
+
+.lightSpeedIn {
+  color: white;
+  font-size: 22px;
+}
+
+.modal-content {
+  background-color: rgba(255, 255, 255, 0.89);
+}
+
+.squads {
+  margin: auto;
+  width: 90%;
+}
+
+.hd-squads {
+  font-family: "Righteous";
+  color: white;
+  text-decoration: underline;
+  padding-bottom: 5%;
+  padding-top: 3%;
+}
+
+.card-body {
+  color: white;
+}
+
+.card-title {
+  text-decoration: underline;
+  font-family: "Teko";
+}
+
+.card-back {
+  background-color: rgba(105, 105, 105, 1);
+}
+
+.theme {
+  font-size: 15px;
+  font-style: italic;
+}
+
+.success {
+  color: white;
+  margin-top: 10%;
+}
+
+.success p {
+  font-size: 22px;
+}
+
+.hd-success {
+  font-family: "Righteous";
+}
+
+.hero-run {
+  width: 27%;
+}
+
+.hero-btns {
+  color: white;
+  margin-top: 20%;
+}

@@ -30,4 +30,8 @@ public class Heroes {
     public static ArrayList<Heroes> getAllheroes() {
         return allheroes;
     }
+
+    public static void clearAllHeroes(){
+        allheroes.clear();
+    }
 }

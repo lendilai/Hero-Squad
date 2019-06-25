@@ -9,8 +9,8 @@ public class Squads {
     private String url;
     private int maxHeroes;
     private int id;
-    public static ArrayList<Squads> allSquads = new ArrayList<>();
-    public static List<Heroes> heroesInSquad;
+    private static ArrayList<Squads> allSquads = new ArrayList<>();
+    private static List<Heroes> heroesInSquad;
 
     public Squads(String name, String theme, String url, int max){
         this.squadName = name;
@@ -19,7 +19,7 @@ public class Squads {
         this.maxHeroes = max;
         allSquads.add(this);
         this.id = allSquads.size();
-        this.heroesInSquad = new ArrayList<>();
+        heroesInSquad = new ArrayList<>();
     }
 
     public String getSquadName() {

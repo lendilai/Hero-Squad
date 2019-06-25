@@ -27,7 +27,7 @@ public class App {
         //Post: Submit data from the add squad form
         post("/squads/new", (request, response) -> {
             Map<String, Object> user = new HashMap<>();
-            String squadName = request.queryParams("name");
+            String squadName = request.queryParams("squadName");
             String theme = request.queryParams("theme");
             String url = request.queryParams("url");
             int numberOf = Integer.parseInt(request.queryParams("max"));
@@ -53,17 +53,17 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //Get: Add hero form
-        get("/heroes/new", (request, response) -> {
+        get("/squads/:id/new", (request, response) -> {
             Map<String, Object> user = new HashMap<>();
             int theId = Integer.parseInt(request.params("id"));
-            Squads squad = Squads.squadWithId(theId);
-            user.put("heroes", squad);
+            Squads heroes = Squads.squadWithId(theId);
+            user.put("heroes", heroes);
             return new ModelAndView(user, "Hero-form.hbs");
         }, new HandlebarsTemplateEngine());
 
 
         //Post: Submit add hero form
-        post("/heroes", (request, response) -> {
+        post("/squads/:id/new", (request, response) -> {
             Map<String, Object> user = new HashMap<>();
             int theId = Integer.parseInt(request.params("id"));
             Squads squad = Squads.squadWithId(theId);
@@ -71,9 +71,17 @@ public class App {
             String superPowers = request.queryParams("superPowers");
             String role = request.queryParams("role");
             Heroes newHero = new Heroes(heroName, superPowers, role);
+            System.out.println("==================" + newHero.getName());
             squad.addHero(newHero);
             user.put("heroes", squad);
             return new ModelAndView(user, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //Get: View the added heroes
+        get("/heroes", (request, response) -> {
+            Map<String, Object> user  = new HashMap<>();
+            user.put("allHeroes", Squads.getHeroesInSquad());
+            return new ModelAndView(user, "View-heroes.hbs");
         }, new HandlebarsTemplateEngine());
 
         //Get: Delete a squad
