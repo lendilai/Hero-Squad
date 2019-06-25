@@ -46,7 +46,7 @@ public class App {
         //Get: View squad-details e.g heroes
         get("/squads/:id", (request, response) -> {
             Map<String, Object> user = new HashMap<>();
-            int theId = Integer.parseInt(request.queryParams("id"));
+            int theId = Integer.parseInt(request.params("id"));
             Squads pageId = Squads.squadWithId(theId);
             user.put("squadHeroes", pageId);
             return new ModelAndView(user, "Heroes.hbs");
@@ -55,9 +55,27 @@ public class App {
         //Get: Add hero form
         get("/heroes/new", (request, response) -> {
             Map<String, Object> user = new HashMap<>();
+            int theId = Integer.parseInt(request.params("id"));
+            Squads squad = Squads.squadWithId(theId);
+            user.put("heroes", squad);
             return new ModelAndView(user, "Hero-form.hbs");
         }, new HandlebarsTemplateEngine());
+
+
         //Post: Submit add hero form
+        post("/heroes", (request, response) -> {
+            Map<String, Object> user = new HashMap<>();
+            int theId = Integer.parseInt(request.params("id"));
+            Squads squad = Squads.squadWithId(theId);
+            String heroName = request.queryParams("hero");
+            String superPowers = request.queryParams("superPowers");
+            String role = request.queryParams("role");
+            Heroes newHero = new Heroes(heroName, superPowers, role);
+            squad.addHero(newHero);
+            user.put("heroes", squad);
+            return new ModelAndView(user, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
         //Get: Delete a squad
     }
 }

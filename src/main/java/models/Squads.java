@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Squads {
     private String squadName;
@@ -9,6 +10,7 @@ public class Squads {
     private int maxHeroes;
     private int id;
     public static ArrayList<Squads> allSquads = new ArrayList<>();
+    public static List<Heroes> heroesInSquad;
 
     public Squads(String name, String theme, String url, int max){
         this.squadName = name;
@@ -17,6 +19,7 @@ public class Squads {
         this.maxHeroes = max;
         allSquads.add(this);
         this.id = allSquads.size();
+        this.heroesInSquad = new ArrayList<>();
     }
 
     public String getSquadName() {
@@ -43,7 +46,14 @@ public class Squads {
         return allSquads.get(id - 1);
     }
 
+    public void addHero(Heroes newHero){ heroesInSquad.add(newHero); }
+
+    public static List<Heroes> getHeroesInSquad() {
+        return heroesInSquad;
+    }
+
     public static void clearAll(){
         allSquads.clear();
     }
+
 }

@@ -38,4 +38,12 @@ public class SquadsTest {
         Squads second = setUpSquad();
         assertEquals(1, Squads.squadWithId(first.getId()).getId());
     }
+
+    @Test
+    public void addToSquad_addsCorrectHero() throws Exception{
+        Heroes newHero = new Heroes("IronMan", "Smart", "Leader");
+        Squads newSquad = setUpSquad();
+        newSquad.addHero(newHero);
+        assertEquals(true, Squads.getHeroesInSquad().contains(newHero));
+    }
 }
