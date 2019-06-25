@@ -1,13 +1,15 @@
+{{#partial "links"}}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+{{/partial}}
 {{#partial "content"}}
-<p>Congrats bro!!!!</p>
-    {{#each userSquad}}
-        <p>{{theme}}</p>
-        <p>{{squadName}}</p>
-        <p>{{maxHeroes}}</p>
-        <a href="/">Home</a>
-{{/each}}
-    {{#each heroes}}
-        {{name}}
-        {{/each}}
+    <p>Congrats bro!!!!</p>
+    <div class="text-center success">
+        <h2 class="hd-success">Success!!</h2><br>
+        <p>Your hero is now ready for action and already running<br> Click him to go home</p>
+        <a href="/"><img src="images/gif.webp" alt="Hero-success" class="img-fluid hero-run"></a>
+    </div>
 {{/partial}}
 {{> layout.hbs}}
