@@ -73,29 +73,27 @@ public class App {
             return new ModelAndView(user, "Hero-form.hbs");
         }, new HandlebarsTemplateEngine());
 
+        //Get: View the added heroes
+        get("/squads/:id/heroes", (request, response) -> {
+            Map<String, Object> user  = new HashMap<>();
+            int theId = Integer.parseInt(request.params("id"));
+            Squads squad = Squads.squadWithId(theId);
+            user.put("allHeroes", squad.getHeroesInSquad());
+            return new ModelAndView(user, "View-heroes.hbs");
+        }, new HandlebarsTemplateEngine());
 
         //Post: Submit add hero form
         post("/squads/:id/new", (request, response) -> {
             Map<String, Object> user = new HashMap<>();
             int theId = Integer.parseInt(request.params("id"));
             Squads squad = Squads.squadWithId(theId);
-            int squadId = Integer.parseInt(request.queryParams("squadId"));
             String heroName = request.queryParams("hero");
             String superPowers = request.queryParams("superPowers");
             String role = request.queryParams("role");
-            Heroes newHero = new Heroes(heroName, superPowers, role, squadId);
-            System.out.println("==================" + newHero.getSquadId() + newHero.getName());
+            Heroes newHero = new Heroes(heroName, superPowers, role);
+            squad.addHero(newHero);
             user.put("heroes", squad.getHeroesInSquad());
             return new ModelAndView(user, "success.hbs");
-        }, new HandlebarsTemplateEngine());
-
-        //Get: View the added heroes
-        get("/squads/:id/heroes", (request, response) -> {
-            Map<String, Object> user  = new HashMap<>();
-            int theId = Integer.parseInt(request.params("id"));
-            System.out.println("=============================" + Squads.matchHero(theId));
-            user.put("allHeroes", Squads.matchHero(theId));
-            return new ModelAndView(user, "View-heroes.hbs");
         }, new HandlebarsTemplateEngine());
 
         //Get: Delete a squad

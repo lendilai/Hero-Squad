@@ -18,7 +18,7 @@ public class HeroesTest {
     }
 
     public Heroes setUpHero(){
-        return new Heroes("IronMan", "Smart", "Leader",1);
+        return new Heroes("IronMan", "Smart", "Leader");
     }
     @Test
     public void newHero_instantiates_correctly() throws Exception{
@@ -36,14 +36,4 @@ public class HeroesTest {
         assertEquals(2, Heroes.getAllHeroes().size());
     }
 
-    @Test
-    public void matchMatchesHeroToSQuad_true() throws  Exception{
-        Squads newSquad = new Squads("Avengers", "Assemble", "http.ytr.com", 2);
-        Squads second = new Squads("Justice", "None", "Lame", 1);
-        Heroes newHero  = new Heroes("we", "we", "we", newSquad.getId());
-        Heroes secondHero = new Heroes("hgf", "fg", "hgc", second.getId());
-        System.out.println(Squads.matchHero(newSquad.getId()));
-        System.out.println(Squads.storeHeroes.get(1).get(1).getName());
-        System.out.println(Squads.storeHeroes.get(2).get(1).getRole());
-    }
 }

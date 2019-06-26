@@ -40,20 +40,19 @@ public class SquadsTest {
         Squads second = setUpSquad();
         assertEquals(1, Squads.squadWithId(first.getId()).getId());
     }
-//
-//    @Test
-//    public void addToSquad_addsCorrectHero() throws Exception{
-//        Heroes newHero = new Heroes("IronMan", "Smart", "Leader", 1);
-//        Squads newSquad = setUpSquad();
-//        newSquad.addHero(newHero);
-//        assertEquals(true, Squads.getHeroesInSquad().contains(newHero));
-//    }
+    @Test
+    public void addToSquad_addsCorrectHero() throws Exception{
+        Heroes newHero = new Heroes("IronMan", "Smart", "Leader");
+        Squads newSquad = setUpSquad();
+        newSquad.addHero(newHero);
+        assertEquals(true, newSquad.getHeroesInSquad().contains(newHero));
+    }
 
     @Test
     public void getsCorrectDate() {
         Squads newSquad = setUpSquad();
         assertEquals(LocalDateTime.now().getDayOfWeek(), newSquad.getCreatedAt().getDayOfWeek());
-        assertEquals("25-June-2019", newSquad.getFormatDateTime()); // Expected result changes depending on the day
+        assertEquals("26-June-2019", newSquad.getFormatDateTime()); // Expected result changes depending on the day
     }
 
     @Test
@@ -65,14 +64,4 @@ public class SquadsTest {
         assertEquals(Squads.getAllSquads().get(0).getId(), 2);
     }
 
-    @Test
-    public void squadHeroes_allHeroesAreAddedToTheArrayList() throws Exception{
-        Squads newsquad = new Squads("we", "ff", "dfg", 1);
-        Heroes first = new Heroes("gh", "fg", "sd", 1);
-        Heroes second = new Heroes("hh", "ff", "ee", 1);
-
-        System.out.println(Squads.matchHero(newsquad.getId()));
-        System.out.println(Squads.matchHero(newsquad.getId()).get(1).getName());
-        System.out.println(Squads.matchHero(newsquad.getId()).get(2).getName());
-    }
 }

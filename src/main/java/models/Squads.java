@@ -17,8 +17,7 @@ public class Squads {
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy");
     private String formatDateTime;
     private static ArrayList<Squads> allSquads = new ArrayList<>();
-    public static HashMap<Integer,ArrayList<Heroes>> storeHeroes=new HashMap<>();
-    private ArrayList<Heroes> heroesInSquad=new ArrayList<>();
+    private ArrayList<Heroes> heroesInSquad;
 
     public Squads(String name, String theme, String url, int max){
         this.squadName = name;
@@ -28,19 +27,9 @@ public class Squads {
         this.formatDateTime = createdAt.format(formatter);
         allSquads.add(this);
         this.id = allSquads.size();
-        storeHeroes.put(this.id,heroesInSquad);
+        heroesInSquad = new ArrayList<>();
     }
 
-    public static ArrayList<Heroes> matchHero(int theId){
-        ArrayList<Heroes> squadHeroes = new ArrayList<>();
-        for(Map.Entry<Integer, ArrayList<Heroes>> finalMatch:storeHeroes.entrySet()){
-           if (theId == finalMatch.getKey()) {
-            squadHeroes=finalMatch.getValue();
-            break;
-           }
-        }
-        return squadHeroes;
-    }
     public String getSquadName() {
         return squadName;
     }
@@ -84,4 +73,7 @@ public class Squads {
         allSquads.clear();
     }
 
+    public void addHero(Heroes newHero) {
+        heroesInSquad.add(newHero);
+    }
 }
