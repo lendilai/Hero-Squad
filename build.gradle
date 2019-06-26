@@ -7,7 +7,7 @@ group 'com.Nathan.heroSquad2'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
-applicationName = "Hero-Squad"
+applicationName = "myverysquad101"
 mainClassName = "App"
 
 repositories {
