@@ -91,8 +91,14 @@ public class App {
             String superPowers = request.queryParams("superPowers");
             String role = request.queryParams("role");
             Heroes newHero = new Heroes(heroName, superPowers, role);
-            squad.addHero(newHero);
-            user.put("heroes", squad.getHeroesInSquad());
+            if (squad.getMaxHeroes() <= squad.getHeroesInSquad().size()){
+                String sorry = "Sorry, this squad is full";
+                user.put("full", sorry);
+            }else{
+                squad.addHero(newHero);
+                user.put("heroes", squad.getHeroesInSquad());
+            }
+
             return new ModelAndView(user, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
