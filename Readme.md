@@ -32,4 +32,4 @@ There are no known bugs, but if you come across any, feel free to contact me.
 You can contact me via my gMail account at ngethenan768@gmail.com.
 
 ## License
-The application is under an [MIT license](https://github.com/lendilai/Hero-Squad/blob/master/LICENSE).
+The application is under an [MIT license](https://github.com/lendilai/Hero-Squad/blob/master/License).
