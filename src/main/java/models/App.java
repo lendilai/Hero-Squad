@@ -9,7 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class App {
+
     public static void main(String[] args) {
+        ProcessBuilder process = new ProcessBuilder();
+        Integer port;
+
+        if (process.environment().get("PORT") != null) {
+            port = Integer.parseInt(process.environment().get("PORT"));
+        }else {
+            port = 4567;
+        }
+        port(port);
+
         staticFileLocation("/public");
 
         //Get: View the Home page
@@ -58,6 +69,7 @@ public class App {
             int theId = Integer.parseInt(request.params("id"));
             Squads heroes = Squads.squadWithId(theId);
             user.put("heroes", heroes);
+            user.put("squads", Squads.getAllSquads());
             return new ModelAndView(user, "Hero-form.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -67,22 +79,22 @@ public class App {
             Map<String, Object> user = new HashMap<>();
             int theId = Integer.parseInt(request.params("id"));
             Squads squad = Squads.squadWithId(theId);
+            int squadId = Integer.parseInt(request.queryParams("squadId"));
             String heroName = request.queryParams("hero");
             String superPowers = request.queryParams("superPowers");
             String role = request.queryParams("role");
-            Heroes newHero = new Heroes(heroName, superPowers, role);
-            squad.addHero(newHero);
-            System.out.println("==================" + squad.getHeroesInSquad());
+            Heroes newHero = new Heroes(heroName, superPowers, role, squadId);
+            System.out.println("==================" + newHero.getSquadId() + newHero.getName());
             user.put("heroes", squad.getHeroesInSquad());
             return new ModelAndView(user, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
         //Get: View the added heroes
-        get("/heroes", (request, response) -> {
+        get("/squads/:id/heroes", (request, response) -> {
             Map<String, Object> user  = new HashMap<>();
             int theId = Integer.parseInt(request.params("id"));
-            Squads squad = Squads.squadWithId(theId);
-            user.put("allHeroes", squad.getHeroesInSquad());
+            System.out.println("=============================" + Squads.matchHero(theId));
+            user.put("allHeroes", Squads.matchHero(theId));
             return new ModelAndView(user, "View-heroes.hbs");
         }, new HandlebarsTemplateEngine());
 

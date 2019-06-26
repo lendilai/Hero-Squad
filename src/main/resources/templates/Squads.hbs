@@ -5,11 +5,13 @@
     <link rel="stylesheet" href="styles.css">
 {{/partial}}
 {{#partial "content"}}
+    <a href="/"><i class="fas fa-arrow-left"></i></a>
     <div class="text-center">
         <h2 class="hd-squads">Squads</h2>
     </div>
+    {{#if userSquad}}
     {{#each userSquad}}
-        <div class="row squads">
+        <div class="row squads animated slideInLeft medium">
             <div class="col-lg-6">
                 <a href="/squads/{{id}}">
                     <div class="card mb-3" style="max-width: 540px;">
@@ -35,5 +37,10 @@
             </div>
         </div>
     {{/each}}
+        {{else}}
+        <div class="text-center">
+            <strong class="none"><p>This page doesn't have any squads yet</p></strong>
+        </div>
+        {{/if}}
 {{/partial}}
 {{> layout.hbs}}
