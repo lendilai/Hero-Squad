@@ -33,6 +33,6 @@ public class HeroesTest {
     public void getAllHeroes_capturesAllHeroes_2() throws Exception{
         Heroes first = setUpHero();
         Heroes second = setUpHero();
-        assertEquals(2, Heroes.getAllheroes().size());
+        assertEquals(2, Heroes.getAllHeroes().size());
     }
 }

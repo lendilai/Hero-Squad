@@ -53,5 +53,15 @@ public class SquadsTest {
     public void getsCorrectDate() {
         Squads newSquad = setUpSquad();
         assertEquals(LocalDateTime.now().getDayOfWeek(), newSquad.getCreatedAt().getDayOfWeek());
+        assertEquals("25-June-2019", newSquad.getFormatDateTime()); // Expected result changes depending on the day
+    }
+
+    @Test
+    public void deleteSquad_deletesCorrectSquad() throws Exception{
+        Squads first = setUpSquad();
+        Squads second = setUpSquad();
+        first.deleteSquad();
+        assertEquals(Squads.getAllSquads().size(), 1);
+        assertEquals(Squads.getAllSquads().get(0).getId(), 2);
     }
 }

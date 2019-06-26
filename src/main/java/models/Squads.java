@@ -62,10 +62,13 @@ public class Squads {
 
     public void addHero(Heroes newHero){ heroesInSquad.add(newHero); }
 
-    public static List<Heroes> getHeroesInSquad() {
+    public List<Heroes> getHeroesInSquad() {
         return heroesInSquad;
     }
 
+    public void deleteSquad(){
+        allSquads.remove(id -1);
+    }
     public static void clearAll(){
         allSquads.clear();
     }

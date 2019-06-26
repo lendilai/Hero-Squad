@@ -71,19 +71,28 @@ public class App {
             String superPowers = request.queryParams("superPowers");
             String role = request.queryParams("role");
             Heroes newHero = new Heroes(heroName, superPowers, role);
-            System.out.println("==================" + newHero.getName());
             squad.addHero(newHero);
-            user.put("heroes", squad);
+            System.out.println("==================" + squad.getHeroesInSquad());
+            user.put("heroes", squad.getHeroesInSquad());
             return new ModelAndView(user, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
         //Get: View the added heroes
         get("/heroes", (request, response) -> {
             Map<String, Object> user  = new HashMap<>();
-            user.put("allHeroes", Squads.getHeroesInSquad());
+            int theId = Integer.parseInt(request.params("id"));
+            Squads squad = Squads.squadWithId(theId);
+            user.put("allHeroes", squad.getHeroesInSquad());
             return new ModelAndView(user, "View-heroes.hbs");
         }, new HandlebarsTemplateEngine());
 
         //Get: Delete a squad
+        get("/squads/:id/delete", (req, res) -> {
+            Map<String, Object> user = new HashMap<>();
+            int theId = Integer.parseInt(req.params("id"));
+            Squads pageId = Squads.squadWithId(theId);
+            pageId.deleteSquad();
+            return new ModelAndView(user, "success.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }

@@ -1,18 +1,19 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Heroes {
     private String name;
     private String superPower;
     private String role;
-    public static ArrayList<Heroes> allheroes = new ArrayList<>();
+    private static List<Heroes> allHeroes = new ArrayList<>();
 
     public Heroes(String name, String power, String role){
         this.name = name;
         this.superPower = power;
         this.role = role;
-        allheroes.add(this);
+        allHeroes.add(this);
     }
 
     public String getName() {
@@ -27,11 +28,11 @@ public class Heroes {
         return role;
     }
 
-    public static ArrayList<Heroes> getAllheroes() {
-        return allheroes;
+    public static List<Heroes> getAllHeroes() {
+        return allHeroes;
     }
 
     public static void clearAllHeroes(){
-        allheroes.clear();
+        allHeroes.clear();
     }
 }
